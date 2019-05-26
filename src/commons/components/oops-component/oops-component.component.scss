@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+// notification styles
+.notification {
+  &__base {
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+  }
+  &__txt {
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    &--supporter {
+      color: #33cc33;
+    }
+
+    &--oops {
+      color: #cc0000;
+    }
+  }
+}

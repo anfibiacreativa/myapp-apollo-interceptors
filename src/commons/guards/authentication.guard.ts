@@ -11,13 +11,13 @@ export class AuthenticationGuard implements CanActivate {
         private router: Router
     ) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
       const canIt: boolean = this.authenticationService.isAuthenticated();
-      console.log(canIt + ' this is the value of canit');
-      // is actually authenticated?
-      if (canIt === true) {
-        this.router.navigate(['/supporter-area']);
-        return ;
+
+      console.log(canIt + ' this is the value of canIt - can it access the supporters zone?');
+
+      if (canIt) {
+        return true;
       } 
       this.router.navigate(['/oops']);
       return false;

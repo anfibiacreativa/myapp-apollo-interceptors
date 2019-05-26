@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit, ViewChildren, ElementRef, 
 import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import gql from 'graphql-tag';
-import { AuthenticationService } from '../../services/authentication/authentication.service';
+
 // We use the gql tag to parse our query string into a query document
 const AllKitten = gql`
   query AllKitten {
@@ -20,7 +20,7 @@ const AllKitten = gql`
 export class CatTeaserComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChildren('lazyKitten') cats: QueryList<ElementRef<HTMLUListElement>>;
   loading: boolean;
-  kittens: any[];
+  kittens: Kitty[];
   config: any = {
     // Root margin determines distance from viewport in the Y axis
     rootMargin: '20px 0px',
@@ -33,9 +33,7 @@ export class CatTeaserComponent implements OnInit, OnDestroy, AfterViewInit {
   private catsSubscription: Subscription;
   constructor(
     private apollo: Apollo,
-    private renderer: Renderer2,
-    private auth: AuthenticationService
-
+    private renderer: Renderer2
   ) {}
 
   lazyLoadCats(): void {
@@ -53,7 +51,7 @@ export class CatTeaserComponent implements OnInit, OnDestroy, AfterViewInit {
 
   preloadCats(entry): void {
     const srcValue = entry.getAttribute('data-attr');
-    console.log(srcValue);
+    console.log(srcValue + ' pic of cat');
     const image = entry.firstChild as HTMLImageElement;
     image.src = srcValue;
   }
@@ -67,7 +65,6 @@ export class CatTeaserComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.auth.setToken();
     this.querySubscription = this.apollo.watchQuery<any>({
       query: AllKitten
     })
@@ -77,7 +74,6 @@ export class CatTeaserComponent implements OnInit, OnDestroy, AfterViewInit {
       this.kittens = data.kittens;
     });
   }
-
   ngAfterViewInit(): void {
     this.watchCats();
     this.catsSubscription = this.cats.changes.subscribe(_ =>

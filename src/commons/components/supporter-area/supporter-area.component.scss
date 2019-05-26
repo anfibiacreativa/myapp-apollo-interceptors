@@ -9,5 +9,29 @@
   &__link {
     display: block;
     padding-top: 30px;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #cc0000;
+  }
+}
+
+// notification styles
+.notification {
+  &__base {
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+  }
+  &__txt {
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    &--supporter {
+      color: #33cc33;
+    }
+
+    &--oops {
+      color: #cc0000;
+    }
   }
 }

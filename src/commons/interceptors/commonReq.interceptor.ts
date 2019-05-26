@@ -32,7 +32,6 @@ export class CommonReqInterceptor implements HttpInterceptor {
               }
           }
           return event;
-      }));
-      
+      }));   
   }
 }
