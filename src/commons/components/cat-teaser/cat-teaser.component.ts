@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit, ViewChildren, ElementRef, 
 import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import gql from 'graphql-tag';
-import { AuthenticationService } from '../../commons/services/authentication.service';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 // We use the gql tag to parse our query string into a query document
 const AllKitten = gql`
   query AllKitten {

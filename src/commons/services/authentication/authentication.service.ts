@@ -15,4 +15,8 @@ export class AuthenticationService {
   getToken(): string {
     return localStorage.getItem('token');
   }
+
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
 }

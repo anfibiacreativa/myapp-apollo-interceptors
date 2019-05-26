@@ -4,7 +4,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../services/authentication/authentication.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Injectable, Injector } from '@angular/core';

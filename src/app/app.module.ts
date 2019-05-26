@@ -8,16 +8,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { CatTeaserComponent } from './cat-teaser/cat-teaser.component';
+import { CatTeaserComponent } from '../commons/components/cat-teaser/cat-teaser.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonReqInterceptor } from '../commons/interceptors/commonReq.interceptor';
+import { OopsComponentComponent } from '../commons/components/oops-component/oops-component.component';
+import { SupporterAreaComponent } from '../commons/components/supporter-area/supporter-area.component';
+import { AuthenticationGuard } from 'src/commons/guards/authentication.guard';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CatTeaserComponent
+    CatTeaserComponent,
+    OopsComponentComponent,
+    SupporterAreaComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,7 @@ import { CommonReqInterceptor } from '../commons/interceptors/commonReq.intercep
     HttpLinkModule
   ],
   providers: [
+    AuthenticationGuard,
     {
     provide: APOLLO_OPTIONS,
     useFactory(httpLink: HttpLink) {
