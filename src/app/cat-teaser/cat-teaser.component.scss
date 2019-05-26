@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+@import '../../commons/commons';
+
+// teaser styles
+.teaser {
+  &__base {
+    background-color: white;
+    padding: 20px;
+    max-width: 100%;
+    overflow: hidden;
+    min-width: 0;
+  }
+  &__hl {
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1;
+  }
+  &__summary,
+  &__link {
+    padding-top: 20px;
+  }
+  &__link {
+    display: inline-block;
+  }
+  &__image {
+    width: 100%;
+  }
+}
