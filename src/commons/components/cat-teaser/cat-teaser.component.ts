@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit, ViewChildren, ElementRef, 
 import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import gql from 'graphql-tag';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 // We use the gql tag to parse our query string into a query document
 const AllKitten = gql`
@@ -33,7 +34,8 @@ export class CatTeaserComponent implements OnInit, OnDestroy, AfterViewInit {
   private catsSubscription: Subscription;
   constructor(
     private apollo: Apollo,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private auth: AuthenticationService
   ) {}
 
   lazyLoadCats(): void {
@@ -65,6 +67,7 @@ export class CatTeaserComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
+    // this.auth.setToken();
     this.querySubscription = this.apollo.watchQuery<any>({
       query: AllKitten
     })

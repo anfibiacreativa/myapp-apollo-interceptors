@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+  constructor(private injector: Injector) {}
   // fake set token
   setToken() { 
     // just set a random number for demo
@@ -16,7 +18,16 @@ export class AuthenticationService {
     return localStorage.getItem('token');
   }
 
+  deleteToken(): void {
+    localStorage.removeItem('token');
+  }
+
   isAuthenticated(): boolean {
     return !!this.getToken();
+  }
+
+  sendBacktoHome(): void {
+    const router: Router = this.injector.get(Router);
+    router.navigate(['/oops']);
   }
 }

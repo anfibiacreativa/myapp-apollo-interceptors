@@ -15,7 +15,7 @@ export class AuthenticationGuard implements CanActivate {
       const canIt: boolean = this.authenticationService.isAuthenticated();
 
       console.log(canIt + ' this is the value of canIt - can it access the supporters zone?');
-
+      // I mean, it seriously can?
       if (canIt) {
         return true;
       } 

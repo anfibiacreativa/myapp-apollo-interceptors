@@ -12,6 +12,7 @@ import { CatTeaserComponent } from '../commons/components/cat-teaser/cat-teaser.
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonReqInterceptor } from '../commons/interceptors/commonReq.interceptor';
+import { CommonResInterceptor } from '../commons/interceptors/commonRes.interceptor';
 import { OopsComponentComponent } from '../commons/components/oops-component/oops-component.component';
 import { SupporterAreaComponent } from '../commons/components/supporter-area/supporter-area.component';
 import { AuthenticationGuard } from 'src/commons/guards/authentication.guard';
@@ -49,6 +50,11 @@ import { AuthenticationGuard } from 'src/commons/guards/authentication.guard';
   {
     provide: HTTP_INTERCEPTORS,
     useClass: CommonReqInterceptor,
+    multi: true,
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: CommonResInterceptor,
     multi: true,
   }
 ],

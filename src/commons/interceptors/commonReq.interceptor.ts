@@ -13,8 +13,7 @@ import { Injectable, Injector } from '@angular/core';
 @Injectable()
 export class CommonReqInterceptor implements HttpInterceptor {
   constructor(
-    public auth: AuthenticationService,
-    private injector: Injector
+    public auth: AuthenticationService
   ) {}
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       // Instantiate AuthenticationService
