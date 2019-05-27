@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 You can see the video of the talk in relation to this repo, here! 
 https://www.youtube.com/watch?v=TbF0ImYVjnw
 
-EDIT: This is an extended version, implementing interceptors and AuthGuards!
+EDIT: This is an extended version, implementing interceptors and a basic AuthGuards example!
 
 ## Development server
 
